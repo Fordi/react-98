@@ -6,9 +6,21 @@ import ReactDOM from "react-dom";
 
 import './98.css';
 import Button from './component/Button';
+import FieldRow from './component/FieldRow';
+import Checkbox from './component/Checkbox';
+import radioGroup from './component/radioGroup';
 
 const Counter = () => {
   const [count, setCount] = useState(0);
+  const [enabled, setEnabled] = useState(true);
+  const [swapped, setSwapped] = useState('no');
+  const Swapped = radioGroup({
+    disabled: !enabled,
+    value: swapped,
+    onChange: (e) => {
+      setSwapped(e.target.value);
+    }
+  });
 
   return (
     <div className="window">
@@ -22,17 +34,29 @@ const Counter = () => {
       </div>
       <div className="window-body">
         <p style={{ textAlign: "center" }}>Current count: {count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <Button onClick={() => setCount(count + 1)}>+</Button>
-          <Button onClick={() => setCount(count - 1)}>-</Button>
-          <Button onClick={() => setCount(0)}>Reset</Button>
-        </div>
+        <FieldRow>
+          <Checkbox
+            checked={enabled}
+            onChange={(e) => setEnabled(e.target.checked)}
+          >
+            Enabled
+          </Checkbox>
+        </FieldRow>
+        <label>Swap behavior?</label>
+        <FieldRow>
+          <Swapped value="yes">Yes</Swapped>
+          <Swapped value="no">No</Swapped>
+        </FieldRow>
+        <FieldRow justify="center">
+          <Button disabled={!enabled} onClick={() => setCount(count + (swapped === 'yes' ? -1 : 1))}>+</Button>
+          <Button disabled={!enabled} onClick={() => setCount(count - (swapped === 'yes' ? -1 : 1))}>-</Button>
+          <Button disabled={!enabled} onClick={() => setCount(0)}>Reset</Button>
+        </FieldRow>
       </div>
     </div>
   );
 };
 
-const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
     <div
@@ -48,5 +72,5 @@ ReactDOM.render(
       </div>
     </div>
   </StrictMode>,
-  rootElement
+  document.getElementById('root')
 );
