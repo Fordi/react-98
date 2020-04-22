@@ -5,6 +5,7 @@ import React, {
 import ReactDOM from "react-dom";
 
 import './98.css';
+import Button from './component/Button';
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -22,9 +23,9 @@ const Counter = () => {
       <div className="window-body">
         <p style={{ textAlign: "center" }}>Current count: {count}</p>
         <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          <button onClick={() => setCount(0)}>Reset</button>
+          <Button onClick={() => setCount(count + 1)}>+</Button>
+          <Button onClick={() => setCount(count - 1)}>-</Button>
+          <Button onClick={() => setCount(0)}>Reset</Button>
         </div>
       </div>
     </div>
