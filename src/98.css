@@ -24,14 +24,14 @@
   --radio-label-spacing: 6px;
 
   /* Some detailed computations for radio buttons and checkboxes */
-  --radio-total-width-precalc: 12px + 6px;
+  --radio-total-width-precalc: calc(12px + 6px);
   --radio-total-width: 18px;
   --radio-left: -6px;
   --radio-dot-width: 4px;
   --radio-dot-top: 4px;
   --radio-dot-left: -14px;
 
-  --checkbox-total-width-precalc: 13px + 6px;
+  --checkbox-total-width-precalc: calc(13px + 6px);
   --checkbox-total-width: 19px;
   --checkbox-left: -7px;
   --checkmark-width: 7px;

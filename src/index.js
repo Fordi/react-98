@@ -1,10 +1,13 @@
-import React from "react";
+import React, {
+  useState,
+  StrictMode,
+} from "react";
 import ReactDOM from "react-dom";
 
-import "../vendor/98.css";
+import './98.css';
 
 const Counter = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
 
   return (
     <div className="window">
@@ -18,7 +21,6 @@ const Counter = () => {
       </div>
       <div className="window-body">
         <p style={{ textAlign: "center" }}>Current count: {count}</p>
-
         <div className="field-row" style={{ justifyContent: "center" }}>
           <button onClick={() => setCount(count + 1)}>+</button>
           <button onClick={() => setCount(count - 1)}>-</button>
@@ -31,7 +33,7 @@ const Counter = () => {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <div
       style={{
         height: "100vh",
@@ -44,6 +46,6 @@ ReactDOM.render(
         <Counter />
       </div>
     </div>
-  </React.StrictMode>,
+  </StrictMode>,
   rootElement
 );
