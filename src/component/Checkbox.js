@@ -6,6 +6,7 @@ export default ({
   children,
   checked: initChecked,
   disabled,
+  label,
   value,
   className,
   onChange,
@@ -35,7 +36,7 @@ export default ({
         className={className}
         {...rest}
       >
-        {children}
+        {children || label}
       </label>
     </>
   );

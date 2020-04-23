@@ -3,14 +3,15 @@ import React from 'react';
 import useUid from '../helpers/useUid';
 
 const Radio = ({
-  id,
-  children,
-  disabled,
-  name,
-  value,
-  className,
-  onChange,
   checked,
+  children,
+  className,
+  disabled,
+  id,
+  label,
+  name,
+  onChange,
+  value,
   ...rest
 }) => {
   const uid = useUid(id);
@@ -33,7 +34,7 @@ const Radio = ({
         className={className}
         {...rest}
       >
-        {children}
+        {children || label}
       </label>
     </>
   );
@@ -44,7 +45,10 @@ export default ({
   value: groupValue,
   onChange,
   ...parentProps
-}) => ({ value, children, ...props }) => {
+}) => ({
+  value,
+  ...props
+}) => {
   const name = useUid(optName);
   return (
     <Radio
@@ -54,8 +58,6 @@ export default ({
       value={value}
       onChange={onChange}
       checked={groupValue === value}
-    >
-      {children}
-    </Radio>
+    />
   );
 };
